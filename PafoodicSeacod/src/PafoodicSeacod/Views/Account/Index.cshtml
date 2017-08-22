@@ -3,6 +3,29 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+@using System.Security.Claims
+
 <h2> Welcome to Son of Sam Something Something Seafood</h2>
 <hr />
-<p>@Html.ActionLink("Register", "Register")</p>
+
+
+@if (User.Identity.IsAuthenticated)
+{
+    <p>Hello, @User.Identity.Name</p>
+    <p>Here is a list of all the mailing list subscribers...</p>
+
+    @using (Html.BeginForm("LogOff", "Account"))
+        {
+        <input type="submit" class-"btn btn-default" value="Log out" />
+            }
+}
+
+else
+{
+    <p>@Html.ActionLink("Register", "Register")</p>
+    <p>@Html.ActionLink("Log in", "Login")</p>
+}
+
+
+
+
