@@ -3,20 +3,25 @@
     Layout = "~/Views/Shared/_layout.cshtml";
 }
 @using PafoodicSeacod.ViewModels
+
 @model NewsletterViewModel
 
 
 
+
 @if (User.Identity.IsAuthenticated)
-{
+{ 
     <p>Hello, @User.Identity.Name</p>
-    <p>Here is a list of all the mailing list subscribers...</p>
+
+    <p>@Html.ActionLink("Subscribers", "Subscribers")</p>
+
 
     @using (Html.BeginForm("LogOff", "Account"))
     {
         <input type="submit" class-"btn btn-default" value="Log out" />
     }
 }
+
 else
 {
 

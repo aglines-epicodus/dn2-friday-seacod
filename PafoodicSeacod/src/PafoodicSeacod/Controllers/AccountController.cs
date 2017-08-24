@@ -26,7 +26,7 @@ namespace PafoodicSeacod.Controllers
 
         public IActionResult Index()
         {
-            return View(_db.Users.ToList());
+            return View();
         }
 
    
@@ -100,5 +100,11 @@ namespace PafoodicSeacod.Controllers
             }
         }
 
+
+        // SUBSCRIBERS ///////////////////////////////
+        public IActionResult Subscribers()
+        {
+            return View(_db.Users);
+        }
     }
 }

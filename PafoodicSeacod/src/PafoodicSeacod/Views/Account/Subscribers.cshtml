@@ -1,0 +1,37 @@
+﻿@*@using PafoodicSeacod.ViewModels
+@model NewsletterViewModel*@
+
+@model IEnumerable<PafoodicSeacod.Models.AppUser>
+
+@using System.Security.Claims
+
+@{
+    ViewData["Title"] = "Subscribers";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@if (User.Identity.IsAuthenticated)
+{
+
+    @if (Model.Any())
+    {
+        <h2>Here are our newsletter subscribers:</h2>
+        <hr />
+
+        <ul>
+            @foreach (var listItem in Model)
+            {
+                <li>@Html.DisplayFor(modelItem => listItem.Email)</li>
+            }
+        </ul>
+    }
+    else
+    {
+        <p>No one has Subscribed yet!</p>
+    }
+}
+else
+{
+        < p > @Html.ActionLink("Login", "Login") </ p >
+
+    }
