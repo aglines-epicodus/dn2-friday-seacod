@@ -88,7 +88,7 @@ namespace PafoodicSeacod.Controllers
         [HttpPost]
         public async Task<IActionResult> Signup(NewsletterViewModel model)
         {
-            var user = new AppUser { UserName = model.Email };
+            var user = new AppUser { UserName = model.Email, PhoneNumber = model.Phone };
             IdentityResult result = await _userManager.CreateAsync(user);
             if (result.Succeeded)
                 {

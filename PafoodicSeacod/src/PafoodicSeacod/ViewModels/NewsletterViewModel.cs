@@ -14,5 +14,10 @@ namespace PafoodicSeacod.ViewModels
         [EmailAddress]
         [Display(Name= "Email")]
         public string Email { get; set; }
+
+        [Required]
+        [Phone]
+        [Display(Name = "Phone")]
+        public string Phone { get; set; }
     }
 }
