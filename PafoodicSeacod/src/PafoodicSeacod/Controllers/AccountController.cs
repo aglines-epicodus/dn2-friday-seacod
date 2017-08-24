@@ -26,14 +26,15 @@ namespace PafoodicSeacod.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            return View(_db.Users.ToList());
         }
 
+   
+        // REGISTER ///////////////////////////////
         public IActionResult Register()
         {
             return View();
         }
-
         [HttpPost]
         public async Task<IActionResult> Register (RegisterViewModel model)
         {
@@ -49,6 +50,8 @@ namespace PafoodicSeacod.Controllers
             }
         }
 
+        // LOGIN ///////////////////////////////
+
         public IActionResult Login()
         {
             return View();
@@ -59,7 +62,7 @@ namespace PafoodicSeacod.Controllers
             Microsoft.AspNetCore.Identity.SignInResult result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, isPersistent: true, lockoutOnFailure: false);
             if (result.Succeeded)
             {
-                return RedirectToAction("Index");
+                return RedirectToAction("Signup");
             }
             else
             {
@@ -67,12 +70,34 @@ namespace PafoodicSeacod.Controllers
             }
         }
 
+        // LOGOUT ///////////////////////////////
 
         [HttpPost]
         public async Task<IActionResult> LogOff()
         {
             await _signInManager.SignOutAsync();
             return RedirectToAction("Index");
+        }
+
+        // SIGNUP ///////////////////////////////
+        public IActionResult Signup()
+        {
+            return View();
+
+        }
+        [HttpPost]
+        public async Task<IActionResult> Signup(NewsletterViewModel model)
+        {
+            var user = new AppUser { UserName = model.Email };
+            IdentityResult result = await _userManager.CreateAsync(user);
+            if (result.Succeeded)
+                {
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return View();
+            }
         }
 
     }

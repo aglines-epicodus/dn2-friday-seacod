@@ -5,23 +5,12 @@
 
 @using System.Security.Claims
 
-<h2> Pafoodic Seacod</h2>
+
+
+<h2> Pafoodic Seacod - Marketing page</h2>
 <hr />
+<h4> Welcome to our Marketing Page!  Lorem Ipsum is on sale.</h4>
+
+<p>@Html.ActionLink("Newsletter Signup", "Signup")</p>
 
 
-@if (User.Identity.IsAuthenticated)
-{
-    <p>Hello, @User.Identity.Name</p>
-    <p>Here is a list of all the mailing list subscribers...</p>
-
-    @using (Html.BeginForm("LogOff", "Account"))
-        {
-        <input type="submit" class-"btn btn-default" value="Log out" />
-            }
-}
-
-else
-{
-    <p>@Html.ActionLink("Register", "Register")</p>
-    <p>@Html.ActionLink("Log in", "Login")</p>
-}
