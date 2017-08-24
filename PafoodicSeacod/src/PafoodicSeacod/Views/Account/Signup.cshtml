@@ -11,9 +11,10 @@
 
 @if (User.Identity.IsAuthenticated)
 { 
+    <br />
     <p>Hello, @User.Identity.Name</p>
 
-    <p>@Html.ActionLink("Subscribers", "Subscribers")</p>
+    <p>@Html.ActionLink("Subscribers - Admin access only", "Subscribers")</p>
 
 
     @using (Html.BeginForm("LogOff", "Account"))
