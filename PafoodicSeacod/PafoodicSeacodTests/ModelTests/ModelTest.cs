@@ -22,6 +22,7 @@ namespace PafoodicSeacod.Tests
 
             //Assert
             Assert.Equal("1@1.1", result);
+            // comment line
         }
     }
 }
