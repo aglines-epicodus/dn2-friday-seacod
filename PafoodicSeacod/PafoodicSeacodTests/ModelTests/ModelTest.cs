@@ -9,12 +9,12 @@ namespace PafoodicSeacod.Tests
 {
     public class ModelTest
     {
-           {
+           
         [Fact]
         public void GetDescriptionTest()
         {
             //Arrange
-            var Subscriber = new Subscriber();
+            var Subscriber = new AppUser();
             Subscriber.Email = "1@1.1";
 
             //Act
@@ -22,7 +22,7 @@ namespace PafoodicSeacod.Tests
 
             //Assert
             Assert.Equal("1@1.1", result);
-            // comment line
+            
         }
     }
 }
